@@ -98,17 +98,31 @@ var dayModule = (function () {
       case 'hotel':
         if (this.hotel) this.hotel.hide();
         this.hotel = attraction;
+        $.post('/api/days/'+this.number+'/'+attraction.type, {id: this.number, hotelId: attraction.id})
+        // .then(day => {
+        //   console.log(day)
+        //   res.redirect('/')
+        // })
         break;
       case 'restaurant':
         utilsModule.pushUnique(this.restaurants, attraction);
+        console.log('/api/days/'+this.number+'/'+attraction.type+'s/'+attraction.id)
+         $.post('/api/days/'+this.number+'/'+attraction.type+'s/'+attraction.id, {id: this.number, restaurantId: attraction.id})
         break;
       case 'activity':
         utilsModule.pushUnique(this.activities, attraction);
+         $.post('/api/days/'+this.number+'/activities/'+attraction.id, {id: this.number, activityId: attraction.id})
+        //  $.post('/api/days/'+this.number+'/activities/'+attraction.id)
+        // .then(day => {
+        //   res.redirect('/')
+        // })
         break;
       default: console.error('bad type:', attraction);
     }
     // activating UI
     attraction.show();
+
+
   };
 
   Day.prototype.removeAttraction = function (attraction) {

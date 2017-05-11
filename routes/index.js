@@ -28,7 +28,7 @@ router.get('/api/hotels', function(req, res, next) {
   .catch(next);
 });
 
-router.get('/api/restuarants', function(req, res, next) {
+router.get('/api/restaurants', function(req, res, next) {
   Restaurant.findAll({})
   .then(restuarants => {
     res.json(restuarants);

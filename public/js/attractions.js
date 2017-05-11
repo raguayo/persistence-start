@@ -6,41 +6,8 @@
  * easily looked up by type and id. It is primarily used when someone clicks
  * to add an attraction in the `options` module.
  */
-let hotels = [];
-let restaurants = [];
-let activities = [];
 
 var attractionsModule = (function () {
-    $.get('/api/hotels')
-  .then(hotels => {
-    hotels = hotels;
-  })
-  .catch(function(err) {
-    console.error.bind(console);
-  });
-
-  $.get('/api/restaurants')
-  .then(restaurants => {
-    restaurants = restaurants;
-  })
-  .catch(function(err) {
-    console.error.bind(console);
-  });
-
-  $.get('/api/activities')
-  .then(activities => {
-    activities = activities;
-  })
-  .catch(function(err) {
-    console.error.bind(console);
-  });
-  // application state
-
-  var enhanced = {
-    hotels: hotels.map(attractionModule.create),
-    restaurants: restaurants.map(attractionModule.create),
-    activities: activities.map(attractionModule.create),
-  };
 
   // private helper methods (only available inside the module)
 
